@@ -1,0 +1,9 @@
+[package]
+name = "Advent-of-Code-2017"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+handlebars = "6.3.0"
+itertools = "0.14.0"
+serde_json = "1.0.135"
