@@ -17,7 +17,7 @@ The symbol `#` indicates that I did this problem in 2017.
 8. `##`
 9. `**` Stateful parsers
 10. `**` Hashing
-11. `# `
+11. `#*` Hexagonal grids
 12. `##`
 13. `  `
 14. `  `
