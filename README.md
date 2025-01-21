@@ -19,7 +19,7 @@ The symbol `#` indicates that I did this problem in 2017.
 10. `**` Hashing
 11. `#*` Hexagonal grids
 12. `##`
-13. `* ` Sentinel values (`0 != None`), refactoring gone wrong, eliminate candidate solutions as early as possible
+13. `**` Sentinel values (`0 != None`), refactoring gone wrong, eliminate candidate solutions as early as possible
 14. `  `
 15. `##`
 16. `  `
@@ -32,3 +32,7 @@ The symbol `#` indicates that I did this problem in 2017.
 23. `  `
 24. `  `
 25. `# `
+
+# Lessons Learned
+
+* *Specializing* is the opposite of *generalizing*.

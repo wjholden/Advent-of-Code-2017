@@ -8,16 +8,16 @@ fn main() {
     println!("Part 2: {:?}", part2(&layers).unwrap());
 }
 
-fn parse(input: &str) -> HashMap<u64, u64> {
+fn parse(input: &str) -> HashMap<u32, u32> {
     let re = Regex::new(r"(?<depth>\d+): (?<range>\d+)").unwrap();
     re.captures_iter(input).map(|cap| {
-        let depth = cap["depth"].parse::<u64>().unwrap();
-        let range = cap["range"].parse::<u64>().unwrap();
+        let depth = cap["depth"].parse::<u32>().unwrap();
+        let range = cap["range"].parse::<u32>().unwrap();
         (depth, range)
     }).collect()
 }
 
-fn part1(layers: &HashMap<u64, u64>, delay: u64) -> Option<u64> {
+fn part1(layers: &HashMap<u32, u32>, delay: u32) -> Option<u32> {
     let mut severity = 0;
     let mut caught = false;
 
@@ -40,7 +40,7 @@ fn part1(layers: &HashMap<u64, u64>, delay: u64) -> Option<u64> {
 }
 
 #[allow(dead_code)]
-fn part2_naive(layers: &HashMap<u64, u64>) -> Option<u64> {
+fn part2_naive(layers: &HashMap<u32, u32>) -> Option<u32> {
     for i in 1.. {
         if part1(layers, i).is_none() {
             return Some(i)
@@ -51,7 +51,7 @@ fn part2_naive(layers: &HashMap<u64, u64>) -> Option<u64> {
 
 /// The naive solution is too slow. We can avoid lots of computational work by
 /// stopping the inner loop as soon as we eliminate the candidate solution.
-fn part2(layers: &HashMap<u64, u64>) -> Option<u64> {
+fn part2(layers: &HashMap<u32, u32>) -> Option<u32> {
     'outer: for delay in 1.. {
         for (depth, range) in layers {
             let time = depth + delay;
