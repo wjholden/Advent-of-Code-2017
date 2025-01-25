@@ -20,7 +20,7 @@ The symbol `#` indicates that I did this problem in 2017.
 11. `#*` Hexagonal grids
 12. `##`
 13. `**` Sentinel values (`0 != None`), refactoring gone wrong, eliminate candidate solutions as early as possible
-14. `  `
+14. `**` More hashing, software engineering, Hamming weight (aka `popcount`), searches (I used BFS)
 15. `##`
 16. `  `
 17. `  `
@@ -36,3 +36,6 @@ The symbol `#` indicates that I did this problem in 2017.
 # Lessons Learned
 
 * *Specializing* is the opposite of *generalizing*.
+* I really like these puzzles like days 10 and 14 that build on each other.
+I abstracted my Knot Hash code into a small library with its own tests.
+* You can do "table-driven testing" in Rust, but I'm not sure that I love it.

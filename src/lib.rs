@@ -33,7 +33,7 @@ pub fn knot_hash(lengths: &[u8]) -> Hash {
             assert!(*length as usize <= n);
 
             // Reverse the order of that length of elements in the list, starting with the element at the current position.
-            partial_reverse(&mut list, position as usize, *length as usize);
+            partial_reverse(&mut list, position, *length as usize);
 
             // Move the current position forward by that length plus the skip size.
             position = (position + (*length as usize) + skip_size) % n;
@@ -72,5 +72,5 @@ mod knot_hash_lib {
         for (input, expect) in examples {
             assert_eq!(knot_hash(input.as_bytes()).dense_hash(), expect)
         }
-    }   
+    }
 }

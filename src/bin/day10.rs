@@ -12,9 +12,11 @@ fn main() {
 
 fn knot_hash_part1(list: &mut [u8], lengths: &[u8]) -> usize {
     let mut position = 0;
-    let mut skip_size = 0;
     let n = list.len();
-    for length in lengths {
+
+    // Clippy helped spot that we don't need to externally maintain skip_size.
+    // We can get it for free using enumerate().
+    for (skip_size, length) in lengths.iter().enumerate() {
         // Lengths larger than the size of the list are invalid.
         assert!(*length as usize <= n);
 
@@ -23,9 +25,6 @@ fn knot_hash_part1(list: &mut [u8], lengths: &[u8]) -> usize {
 
         // Move the current position forward by that length plus the skip size.
         position = (position + (*length as usize) + skip_size) % n;
-
-        // Increase the skip size by one.
-        skip_size += 1;
     }
     list[0] as usize * list[1] as usize
 }
