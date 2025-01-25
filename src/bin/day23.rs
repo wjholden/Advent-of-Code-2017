@@ -5,7 +5,7 @@ fn main() {
 }
 
 fn part1(_input: &str) -> usize {
-    0
+    todo!()
 }
 
 #[cfg(test)]
@@ -17,10 +17,5 @@ mod day23 {
     #[test]
     fn test1() {
         assert_eq!(part1(SAMPLE), 0)
-    }
- 
-    #[test]
-    fn test2() {
-        //assert_eq!(part2(SAMPLE), 0)
-    }   
+    } 
 }
