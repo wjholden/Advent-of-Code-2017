@@ -25,7 +25,7 @@ The symbol `#` indicates that I did this problem in 2017.
 16. `**` Periods, shortcuts, circular arrays
 17. `**` More periods, fast insertions, don't compute something you don't care about
 18. `#*` Assembly language, channels, concurrency, reading comprehension (small details in spec, unexpected possibilities in input)
-19. `  `
+19. `**` Complex numbers, pathfinding
 20. `# `
 21. `  `
 22. `# `
