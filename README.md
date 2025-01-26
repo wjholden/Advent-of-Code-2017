@@ -24,7 +24,7 @@ The symbol `#` indicates that I did this problem in 2017.
 15. `##`
 16. `**` Periods, shortcuts, circular arrays
 17. `**` More periods, fast insertions, don't compute something you don't care about
-18. `# `
+18. `#*` Assembly language, channels, concurrency, reading comprehension (small details in spec, unexpected possibilities in input)
 19. `  `
 20. `# `
 21. `  `
@@ -39,3 +39,6 @@ The symbol `#` indicates that I did this problem in 2017.
 * I really like these puzzles like days 10 and 14 that build on each other.
 I abstracted my Knot Hash code into a small library with its own tests.
 * You can do "table-driven testing" in Rust, but I'm not sure that I love it.
+* Values passed to `unwrap_or` are eagerly evaluated. This means that if there
+is a side-effect from whatever you have in `unwrap_or`, you will have that
+effect.
