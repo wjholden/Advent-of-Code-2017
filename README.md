@@ -22,8 +22,8 @@ The symbol `#` indicates that I did this problem in 2017.
 13. `**` Sentinel values (`0 != None`), refactoring gone wrong, eliminate candidate solutions as early as possible
 14. `**` More hashing, software engineering, Hamming weight (aka `popcount`), searches (I used BFS)
 15. `##`
-16. `**` Periods, shortcuts
-17. `  `
+16. `**` Periods, shortcuts, circular arrays
+17. `**` More periods, fast insertions, don't compute something you don't care about
 18. `# `
 19. `  `
 20. `# `
