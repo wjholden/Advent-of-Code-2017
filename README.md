@@ -26,7 +26,7 @@ The symbol `#` indicates that I did this problem in 2017.
 17. `**` More periods, fast insertions, don't compute something you don't care about
 18. `#*` Assembly language, channels, concurrency, reading comprehension (small details in spec, unexpected possibilities in input)
 19. `**` Complex numbers, pathfinding
-20. `# `
+20. `#*` Vectors, particle simulations, order-of-operations
 21. `  `
 22. `# `
 23. `  `
