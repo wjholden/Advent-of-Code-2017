@@ -42,3 +42,15 @@ I abstracted my Knot Hash code into a small library with its own tests.
 * Values passed to `unwrap_or` are eagerly evaluated. This means that if there
 is a side-effect from whatever you have in `unwrap_or`, you will have that
 effect.
+
+# Misc
+
+Download puzzle inputs:
+
+```
+(1..25) | % {
+    $o = "day{0:d2}.txt" -f $_;
+    $u = "https://adventofcode.com/2017/day/$($_)/input";
+    curl $u --cookie "session=[your-session-key]" -o $o
+}
+```
