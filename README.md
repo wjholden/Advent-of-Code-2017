@@ -30,7 +30,7 @@ The symbol `#` indicates that I did this problem in 2017.
 21. `  `
 22. `# `
 23. `  `
-24. `  `
+24. `**` Graph paths
 25. `# `
 
 # Lessons Learned
