@@ -27,7 +27,7 @@ The symbol `#` indicates that I did this problem in 2017.
 18. `#*` Assembly language, channels, concurrency, reading comprehension (small details in spec, unexpected possibilities in input)
 19. `**` Complex numbers, pathfinding
 20. `#*` Vectors, particle simulations, order-of-operations
-21. `  `
+21. `**` Matrices, copying
 22. `# `
 23. `  `
 24. `**` Graph paths
@@ -42,6 +42,11 @@ I abstracted my Knot Hash code into a small library with its own tests.
 * Values passed to `unwrap_or` are eagerly evaluated. This means that if there
 is a side-effect from whatever you have in `unwrap_or`, you will have that
 effect.
+* Rust's strong static typing really got in the way in day 21 with Nalgebra.
+I had to copy a lot of data that I think should have been OK to reference.
+
+# Resources
+* https://corrode.dev/blog/defensive-programming/
 
 # Misc
 
