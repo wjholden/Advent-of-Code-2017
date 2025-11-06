@@ -45,9 +45,13 @@ impl Enhancer {
             .lines()
             .map(|line| {
                 let mut split_line = line.split(" => ");
-                let input = Enhancer::parse_pattern(split_line.next().unwrap());
-                let output = Enhancer::parse_pattern(split_line.next().unwrap());
-                (input, output)
+                if let (Some(l1), Some(l2)) = (split_line.next(), split_line.next()) {
+                    let input = Enhancer::parse_pattern(l1);
+                    let output = Enhancer::parse_pattern(l2);
+                    (input, output)
+                } else {
+                    panic!()
+                }
             })
             .collect()
     }
@@ -71,40 +75,20 @@ impl Enhancer {
         )
     }
 
-    pub fn enhance(&self, m: DMatrix<u64>) -> DMatrix<u64> {
-        if m.nrows().is_even() {
-            self.enhance2(m)
-        } else {
-            self.enhance3(m)
-        }
-    }
-
-    pub fn enhance2(&self, m1: DMatrix<u64>) -> DMatrix<u64> {
+    pub fn enhance(&self, m1: DMatrix<u64>) -> DMatrix<u64> {
         let n1 = m1.nrows();
-        let g = n1 / 2;
-        let n2 = g * 3;
+        let s1 = if n1.is_even() { 2 } else { 3 };
+        let s2 = if n1.is_even() { 3 } else { 4 };
+        let g = n1 / s1;
+        let n2 = g * s2;
         let mut m2 = DMatrix::zeros(n2, n2);
         for r in 0..g {
             for c in 0..g {
-                let v1 = DMatrix::from(m1.view((2 * r, 2 * c), (2, 2)));
+                // https://users.rust-lang.org/t/nalgebra-best-practice-to-assign-a-matrix-to-a-part-submatrix-of-an-existing-matrix/132945/8
+                let v1 = DMatrix::from(m1.view((s1 * r, s1 * c), (s1, s1)));
                 let output = self.rules.get(&v1).unwrap();
-                let mut v2 = m2.view_mut((3 * r, 3 * c), (3, 3));
-                output.add_to(&DMatrix::zeros(3, 3), &mut v2);
-            }
-        }
-        m2
-    }
-
-    pub fn enhance3(&self, m1: DMatrix<u64>) -> DMatrix<u64> {
-        let g = m1.nrows() / 3;
-        let n = g * 4;
-        let mut m2 = DMatrix::zeros(n, n);
-        for r in 0..g {
-            for c in 0..g {
-                let v1 = DMatrix::from(m1.view((3 * r, 3 * c), (3, 3)));
-                let output = self.rules.get(&v1).unwrap();
-                let mut v2 = m2.view_mut((4 * r, 4 * c), (4, 4));
-                output.add_to(&DMatrix::zeros(4, 4), &mut v2);
+                let mut v2 = m2.view_mut((s2 * r, s2 * c), (s2, s2));
+                output.add_to(&DMatrix::zeros(s2, s2), &mut v2);
             }
         }
         m2
