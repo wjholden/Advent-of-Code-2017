@@ -29,7 +29,7 @@ fn solve(input: &str, bursts: usize, part: Part) -> usize {
                     // https://wjholden.com/advent-of-code-2017-day22-part1.pdf
                     State::Clean => [-dy, dx],
                     State::Infected => [dy, -dx],
-                    State::Weakened | State::Flagged => unimplemented!(),
+                    State::Weakened | State::Flagged => unreachable!(),
                 };
                 // If the current node is clean, it becomes infected. =
                 // Otherwise, it becomes cleaned.
@@ -41,7 +41,10 @@ fn solve(input: &str, bursts: usize, part: Part) -> usize {
                             State::Infected
                         }
                         State::Infected => State::Clean,
-                        State::Weakened | State::Flagged => unimplemented!(),
+                        // You could delete the clean ones and this whole thing would still work,
+                        // but from my tests it doesn't make much difference. We aren't visiting
+                        // very many positions (just 93764 in part 2) and HashMap scales really well.
+                        State::Weakened | State::Flagged => unreachable!(),
                     }
                 });
             }
@@ -99,7 +102,7 @@ fn parse(input: &str) -> HashMap<(i64, i64), State> {
                 match c {
                     '.' => State::Clean,
                     '#' => State::Infected,
-                    _ => panic!(),
+                    _ => unreachable!(),
                 },
             );
         }
@@ -118,7 +121,7 @@ fn show(map: &HashMap<(i64, i64), State>) {
             match map.get(&(c, r)) {
                 Some(State::Infected) => print!("#"),
                 None | Some(State::Clean) => print!("."),
-                _ => panic!(),
+                _ => unreachable!(),
             }
             print!(" ");
         }
