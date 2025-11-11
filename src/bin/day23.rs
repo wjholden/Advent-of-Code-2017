@@ -1,11 +1,13 @@
 use std::{collections::BTreeMap, panic};
 
 use itertools::Itertools;
+use primes::PrimeSet;
 
-fn main() {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let puzzle = include_str!("../../puzzles/day23.txt").trim();
     println!("Part 1: {}", part1(puzzle));
-    // println!("Part 2: {}", part2(puzzle));
+    println!("Part 2: {}", part2(puzzle)?);
+    Ok(())
 }
 
 fn part1(input: &str) -> usize {
@@ -42,6 +44,63 @@ fn part1(input: &str) -> usize {
         };
     }
     muls
+}
+
+fn part2(input: &str) -> Result<usize, Box<dyn std::error::Error>> {
+    let mut s = primes::Sieve::new();
+    let instructions = parse(input);
+    let b = instructions[0][2].parse::<i64>()? * instructions[4][2].parse::<i64>()?
+        - instructions[5][2].parse::<i64>()?;
+    let c = b - instructions[7][2].parse::<i64>()?;
+    let step = instructions[30][2].parse::<i64>()?.abs();
+    Ok((b..=c)
+        .step_by(step as usize)
+        .filter(|&x| !s.is_prime(x as u64))
+        .count())
+}
+
+fn _part2_manual_decompile(input: &str) -> Result<i64, Box<dyn std::error::Error>> {
+    let instructions = parse(input);
+
+    let a = 1;
+    let mut b: i64;
+    let c: i64;
+    let mut d;
+    let mut e;
+    let mut f;
+    let mut h = 0;
+
+    if a != 0 {
+        b = instructions[0][2].parse::<i64>()? * instructions[4][2].parse::<i64>()?
+            - instructions[5][2].parse::<i64>()?;
+        c = b - instructions[7][2].parse::<i64>()?;
+    } else {
+        b = instructions[0][2].parse::<i64>()?;
+        c = b;
+    }
+
+    while b <= c {
+        f = 1;
+        d = 2;
+        while d < b {
+            e = 2;
+            while e < b {
+                if d * e == b {
+                    f = 0;
+                }
+                e += 1;
+            }
+            d += 1;
+        }
+
+        if f == 0 {
+            h += 1;
+        }
+
+        b += 17;
+    }
+
+    Ok(h)
 }
 
 fn parse(input: &str) -> Vec<[&str; 3]> {

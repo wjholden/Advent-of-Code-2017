@@ -1,7 +1,7 @@
 # 2017
 
 I discovered Advent of Code in 2017 while in the Philippines with my family.
-I didn't finish AoC 2017 back then, so now (7 years later) I'm giving it another attempt (using Rust).
+I didn't finish AoC 2017 back then, so now ~~(7 years later)~~ (8 years later) I'm giving it another attempt (using Rust).
 
 # Daily Themes and Stars
 
@@ -28,10 +28,10 @@ The symbol `#` indicates that I did this problem in 2017.
 19. `**` Complex numbers, pathfinding
 20. `#*` Vectors, particle simulations, order-of-operations
 21. `**` Matrices, copying
-22. `# `
-23. `  `
+22. `#*` Vectors, finite-state machines
+23. `**` Assembly language, reverse engineering, off-by-one errors
 24. `**` Graph paths
-25. `# `
+25. `#*`
 
 # Lessons Learned
 
